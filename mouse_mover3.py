@@ -5,13 +5,30 @@ import random
 import threading
 import time
 from datetime import datetime, timedelta
-import keyboard  # You'll need to install this: pip install keyboard
+import keyboard
+
+import os
+import sys
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
+__author__ = "Dipankar Boruah"
+__version__ = "1.0.0"
+__license__ = "MIT"
 
 class MouseMoverApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Mouse Mover")
-        self.root.geometry("400x600")  # Made window taller for hotkey settings
+        self.root.geometry("400x600")  
         
         # Enable window controls
         self.root.resizable(True, True)
